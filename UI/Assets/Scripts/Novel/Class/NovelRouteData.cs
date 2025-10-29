@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Const;
+using MyConst;
 using Util;
 
 public class NovelRouteDataList
@@ -48,10 +48,10 @@ public class NovelRouteDataList
             novelRouteSaveDataList.Add(novelRouteSaveData);
         }
 
-        //foreach (NovelRouteData novelRouteData in nowNovelUseRouteData.NovelRouteDataList)
-        //{
-        //    Debug.Log($"nowNovelRouteData : Route : {novelRouteData.Route}, routeCondition : {novelRouteData.RouteCondition}");
-        //}
+        foreach (NovelRouteData novelRouteData in nowNovelUseRouteData.NovelRouteDataList)
+        {
+            Debug.Log($"nowNovelRouteData : Route : {novelRouteData.Route}, routeCondition : {novelRouteData.RouteCondition}");
+        }
 
         PlayerDataUtils.SaveNovelRouteData(novelRouteSaveData);
     }
@@ -67,10 +67,10 @@ public class NovelRouteDataList
         nowNovelUseRouteData = foundData.NovelUseRouteData;
 
         List<string> nowRouteList = nowNovelUseRouteData.GetRouteConditionsFromNovelRouteData();
-        //foreach (string nowRoute in nowRouteList)
-        //{
-        //    Debug.Log($"Load : nowRoute : {nowRoute}");
-        //}
+        foreach (string nowRoute in nowRouteList)
+        {
+            Debug.Log($"Load : nowRoute : {nowRoute}");
+        }
     }
 
     public NovelUseRouteData GetNovelUseRouteData(int saveNum)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-using Const;
+using MyConst;
 
 namespace Util{
     public static class FileUtils

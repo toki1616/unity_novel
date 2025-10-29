@@ -4,7 +4,7 @@ using UnityEngine;
 using UniRx;
 using Zenject;
 
-using Const;
+using MyConst;
 
 public class NovelCreateSaveDataButtonView : MonoBehaviour
 {

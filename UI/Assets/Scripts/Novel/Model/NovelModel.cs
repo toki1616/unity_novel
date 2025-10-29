@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Const;
 using Cysharp.Threading.Tasks;
-using myEnum;
 using UniRx;
 using UnityEngine;
+
+using MyConst;
+using MyEnum;
 
 public class NovelModel
 {
@@ -38,6 +39,9 @@ public class NovelModel
         isComplatedMessage = true;
     }
 
+    /// <summary>
+    /// 画面クリック時の処理
+    /// </summary>
     public void SendTap()
     {
         //Debug.Log($"test : NovelModel : SendTap");
@@ -75,13 +79,10 @@ public class NovelModel
     private readonly ReactiveProperty<string[]> _sendSelectMessages = new ReactiveProperty<string[]>();
     public IReadOnlyReactiveProperty<string[]> SendSelectMessages => _sendSelectMessages;
 
-    public void SendNextMessageText()
-    {
-        //Debug.Log($"test : NovelModel : SendNextMessageText");
-        NovelMessage novelMessage = _novelMessageData.GetNextMessage();
-        SendMessage(novelMessage);
-    }
-
+    /// <summary>
+    /// メッセージを送信する処理
+    /// </summary>
+    /// <param name="novelMessage">送信するメッセージの情報</param>
     private void SendMessage(NovelMessage novelMessage)
     {
         //Debug.Log($"NovelMessage : storyNum ：{novelMessage.GetStoryNum()}, route ：{novelMessage.GetRoute()}, message ：{novelMessage.GetMessage()}, selectMessage ：{novelMessage.GetSelectMessage()}, characterName ：{novelMessage.GetCharacterName()}, characterImagePath : {novelMessage.GetCharacterImageList()}, backgroundImagePath : {novelMessage.GetBackgroundImage().name}");
@@ -103,14 +104,25 @@ public class NovelModel
         _sendCharacterImage.SetValueAndForceNotify(novelMessage.GetCharacterImageList());
     }
 
-    // 選択肢
-    private void SendNowSelectMessage()
+    /// <summary>
+    /// 次のメッセージを送信する処理
+    /// </summary>
+    public void SendNextMessageText()
     {
-        NovelMessage novelMessage = _novelMessageData.GetNowMessage();
-        SendSelectMessage(novelMessage);
+        //Debug.Log($"test : NovelModel : SendNextMessageText");
+        NovelMessage novelMessage = _novelMessageData.GetNextMessage();
+        SendMessage(novelMessage);
     }
 
+    /// <summary>
+    /// 選択肢が表示されているかどうかのbool
+    /// </summary>
     private bool isSelectMessage = false;
+
+    /// <summary>
+    /// 選択肢を送信する処理
+    /// </summary>
+    /// <param name="novelMessage">送信するメッセージ情報</param>
     private void SendSelectMessage(NovelMessage novelMessage)
     {
         string[] selectMessages = novelMessage.GetSelectMessages();
@@ -128,6 +140,15 @@ public class NovelModel
         _sendSelectMessages.SetValueAndForceNotify(novelMessage.GetSelectMessages());
     }
 
+    private void SendNowSelectMessage()
+    {
+        NovelMessage novelMessage = _novelMessageData.GetNowMessage();
+        SendSelectMessage(novelMessage);
+    }
+
+    /// <summary>
+    /// 次のメッセージを送信する処理
+    /// </summary>
     private void NextMessageMove()
     {
         //if (!_isUIActive.Value)
@@ -156,6 +177,9 @@ public class NovelModel
         SendNextMessageText();
     }
 
+    /// <summary>
+    /// Skip中のメッセージを送信する処理
+    /// </summary>
     private void SkipNextMessageMove()
     {
         if (!_isUIActive.Value)
@@ -184,7 +208,15 @@ public class NovelModel
         SendSkipUpdateMessage();
     }
 
+    /// <summary>
+    /// メッセージが全て表示されている状態か判定するbool
+    /// </summary>
     private bool isComplatedMessage = true;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public async UniTask OnComplatedMessageView()
     {
         isComplatedMessage = true;

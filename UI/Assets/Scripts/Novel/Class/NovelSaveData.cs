@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Const;
+using MyConst;
 using Util;
 [Serializable]
 public class NovelSaveDataList
