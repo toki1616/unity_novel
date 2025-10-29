@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Const
+namespace MyConst
 {
     public static class NovelMessageConst
     {

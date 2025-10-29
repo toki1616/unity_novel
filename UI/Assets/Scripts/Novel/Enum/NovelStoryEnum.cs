@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace myEnum{
+namespace MyEnum{
     public class NovelStoryEnum
     {
         public enum Story

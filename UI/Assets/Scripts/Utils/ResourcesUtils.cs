@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using Const;
+using MyConst;
 
 namespace Util
 {
