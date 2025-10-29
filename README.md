@@ -1,4 +1,4 @@
-# UIまとめ & NovelGame用リポジトリ
+# NovelGame用リポジトリ
 
 ## NovelGame
 script系の階層
