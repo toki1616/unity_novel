@@ -1,5 +1,8 @@
 # NovelGame用リポジトリ
 
+## 動画
+https://youtu.be/Q3IlyxBdLyw
+
 ## NovelGame
 script系の階層
 Assets/Scripts/Novel
